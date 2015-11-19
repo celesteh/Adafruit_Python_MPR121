@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Sexbot2
+Exec=/home/pi/Documents/bot/Adafruit_Python_MPR121/examples/sexbot2.sh
+Type=application
