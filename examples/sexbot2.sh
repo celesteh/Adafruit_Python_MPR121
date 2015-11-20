@@ -13,13 +13,22 @@ sleep 20
 while true
     do
 
-        touch /tmp/sexbot2
+        #touch /tmp/sexbot2
 
-        sleep 10
+        sleep 5
 
+        git pull
+        sleep 5
         echo "starting script"
-        sudo /usr/bin/python Talk.py
+        sudo /usr/bin/python Talk.py &
+        pid=$!
 
+        keepAlive.sh $pid &
+        alive_pid=$!
+
+        wait $pid
+        kill $alive_pid
+        
         sleep 1
 
 done

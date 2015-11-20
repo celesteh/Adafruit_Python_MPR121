@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import sys
-import time, math, random, threading, glob
+import time, math, random, threading, glob, os
 
 #import pygame
 import subprocess as sp
@@ -36,6 +36,15 @@ text = sfxFiles[last]
 #text = pygame.mixer.music.load(sfxFiles[nextt])
 #print(nSFX, text, sfxFiles)
 
+def touch ():
+    if not os.path.exists('/tmp/sexbot2'):
+        open('/tmp/sexbot2', 'a').close() 
+    return
+
+touch()
+count = 0
+should_touch = 600 # once per minute
+
 
 last_touched = cap.is_touched(1) or cap.is_touched(2)
 while True:
@@ -60,6 +69,7 @@ while True:
         #    last = nextt
         print("playing")
         sp.call(['play', text], env=env)
+        touch()
         nextt=last
         while ((nSFX > 1) and (nextt == last)):
             nextt = random.randrange(0, (nSFX-1))
@@ -71,4 +81,10 @@ while True:
         #print '{0} released!'.format(i)
     # Update last state and wait a short period before repeating.
     last_touched = current_touched
+    
+    count += count
+    count %= should_touch
+    if (count == 0):
+        touch()
+
     time.sleep(0.1)
