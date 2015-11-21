@@ -23,7 +23,7 @@ while true
         sudo /usr/bin/python Talk.py &
         pid=$!
 
-        keepAlive.sh $pid &
+        ./keepAlive.sh $pid &
         alive_pid=$!
 
         wait $pid

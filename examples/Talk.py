@@ -67,6 +67,7 @@ while True:
         #        nextt = random.randrange(0, (nSFX-1))
             #text = pygame.mixer.Sound(sfxFiles[nextt])
         #    last = nextt
+        touch()
         print("playing")
         sp.call(['play', text], env=env)
         touch()
@@ -82,8 +83,9 @@ while True:
     # Update last state and wait a short period before repeating.
     last_touched = current_touched
     
-    count += count
+    count += 1
     count %= should_touch
+    #print(count)
     if (count == 0):
         touch()
 

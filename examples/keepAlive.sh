@@ -1,10 +1,10 @@
 #!/bin/bash
 
-dur=70
+dur=65
 sleep_time=$dur
 alive=/tmp/sexbot2
 
-rm $alive
+sudo rm $alive
 
 sleep $sleep_time
 
@@ -13,11 +13,11 @@ while true
 
         if [ ! -f $alive ]; then
             echo "File not found! - Talk.py has not checked in and must be hung"
-            kill $1
+            sudo kill $1
             exit 0
         else
 
-            rm $alive
+            sudo rm $alive
         fi
 
         sleep $sleep_time
